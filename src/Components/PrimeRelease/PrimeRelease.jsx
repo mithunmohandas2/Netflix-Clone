@@ -14,8 +14,11 @@ function PrimeRelease() {
         setMovie1(response.data.results[0]);
         setMovie2(response.data.results[1]);
         setMovie3(response.data.results[2]);
-        console.log(response.data.results[0])
+        // console.log(response.data.results[0])
       })
+      .catch((err)=>{
+        alert('Network Error')
+    })
   }, [])
 
   return (

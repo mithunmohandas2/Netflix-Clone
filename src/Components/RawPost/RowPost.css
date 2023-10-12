@@ -14,13 +14,17 @@
     display: none;
 }
 
-
 .poster {
     max-height: 250px;
     margin-right: 10px;
 
 }
+.poster_small {
+    max-height: 150px;
+    margin-right: 10px;
+    cursor:pointer;
 
+}
 
 .subHeading {
     --s: 0.1em;
@@ -40,4 +44,12 @@
 .subHeading:hover {
     --_p: 100%;
     color: rgb(229, 9, 20);
+}
+
+.zoomEffect {
+    transition: transform 0.3s ease-in-out;
+}
+
+.zoomEffect:hover {
+    transform: scale(1.2);
 }
