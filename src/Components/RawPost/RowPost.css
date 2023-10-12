@@ -1,0 +1,43 @@
+.row {
+    margin-left: 20px;
+    color: #fff;
+}
+
+.posters {
+    display: flex;
+    padding: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.posters::-webkit-scrollbar {
+    display: none;
+}
+
+
+.poster {
+    max-height: 250px;
+    margin-right: 10px;
+
+}
+
+
+.subHeading {
+    --s: 0.1em;
+    /* the thickness of the line */
+    --c: #ff0000;
+    /* the color */
+    color: #ffffff;
+    padding-bottom: var(--s);
+    background:
+        linear-gradient(90deg, var(--c) 50%, #000 0) calc(100% - var(--_p, 0%))/200% 100%,
+        linear-gradient(var(--c) 0 0) 0% 100%/var(--_p, 0%) var(--s) no-repeat;
+    -webkit-background-clip: text, padding-box;
+    background-clip: text, padding-box;
+    transition: 0.5s;
+}
+
+.subHeading:hover {
+    --_p: 100%;
+    color: rgb(229, 9, 20);
+}
