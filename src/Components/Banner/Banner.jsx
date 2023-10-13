@@ -10,6 +10,7 @@ function Banner() {
                 Ready to watch here from ₹ 149.  </h1>
                 <h4>Join today. Cancel anytime.</h4>
                 <h6 className='my-4'>Ready to watch? Get Started your email to create or restart your membership.</h6>
+                <button className='btn btn-danger m-1 px-5'>Get Started</button>
                
             </div>
         <div className=" fade_bottom"></div>

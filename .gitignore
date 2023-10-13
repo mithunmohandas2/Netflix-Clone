@@ -1,4 +1,5 @@
 secretData.jsx
+.env
 # Logs
 logs
 *.log

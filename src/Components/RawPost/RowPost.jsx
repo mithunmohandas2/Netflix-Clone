@@ -11,10 +11,7 @@ function RowPost(props) {
     const opts = {
         height: '390',
         width: '100%',
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            autoplay: 1,
-        },
+        playerVars: { autoplay: 1 },
     };
 
     useEffect(() => {
@@ -22,17 +19,18 @@ function RowPost(props) {
             .then((res) => {
                 setMovies(res.data.results);
                 // console.log(res.data.results);
+            }).catch((err) => {
+                console.error("Axios Error", err);
             })
     }, [])
 
     function trailerHandler(id) {
-        console.log(id)
+        // console.log(id)
         axios.get(`${baseUrl}movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
             .then((res) => {
-                // setMovieID(res.data.results);
-                console.log(res.data.results.length > 0 ? res.data.results[0].key : null);
-                setMovieID(res.data.results.length > 0 ? res.data.results[0].key : null);
-            }).catch((err)=>{
+                const Trailer = res.data.results.filter((obj) => obj.type === 'Trailer' && obj.site === "YouTube")
+                setMovieID(Trailer.length > 0 ? Trailer[0].key : null);
+            }).catch((err) => {
                 console.log(err)
                 setMovieID(null);
             })
@@ -43,13 +41,13 @@ function RowPost(props) {
             <h2 className='mt-5 subHeading'>{props.title}</h2>
             <div className='posters'>
                 {
-
                     movies && movies.length > 0 ? movies.map((obj) => {
                         return <img className={props.isSmall ? 'poster_small' : 'poster zoomEffect'} alt='poster' src={`${imgUrl + obj.poster_path}`} onClick={() => { trailerHandler(obj.id) }} />
                     }) : ''
                 }
             </div>
 
+            {movieID && <button className='btn btn-dark' onClick={() => setMovieID(null)}><span className='bg-danger px-2 py-1' style={{ borderRadius: 100 }} >x</span></button>}
             {movieID && !props.noPreview && <YouTube videoId={movieID} opts={opts} />}
 
         </div>
