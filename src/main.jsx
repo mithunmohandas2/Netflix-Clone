@@ -10,4 +10,4 @@ setTimeout(() => {     // Delay rendering by 13 seconds to load Netflix Intro
       <App />
     </React.StrictMode>,
   );
-}, 12000);
+}, 5500);
